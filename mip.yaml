@@ -1,0 +1,12 @@
+name: miplens
+description: "AI-generated overviews of MATLAB packages"
+version: "main"
+license: Apache-2.0
+repository: "https://github.com/magland/miplens"
+dependencies: []
+
+addpaths:
+  - path: "."
+
+builds:
+  - architectures: [any]
