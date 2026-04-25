@@ -9,4 +9,4 @@ compatibility_date = "2024-09-01"
 #   OPENROUTER_API_KEY=sk-or-...
 
 [vars]
-OPENROUTER_MODEL = "google/gemini-2.5-flash"
+OPENROUTER_MODEL = "anthropic/claude-sonnet-4.6"

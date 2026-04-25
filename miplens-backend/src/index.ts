@@ -119,7 +119,7 @@ function runLensStream(
         const fileMap = new Map<string, string>();
         for (const f of files) fileMap.set(f.path, f.content);
 
-        const model = env.OPENROUTER_MODEL || "google/gemini-2.5-flash";
+        const model = env.OPENROUTER_MODEL || "anthropic/claude-sonnet-4.6";
         const totalBytes = files.reduce((n, f) => n + f.content.length, 0);
         const trimmedQuery = query.trim();
         console.log(
@@ -293,7 +293,20 @@ function buildInitialMessages(
     "contents of the READMEs and mip.yaml/mip.json. If you need more,",
     "call the read_file tool with a path from the manifest. Only read",
     "what you actually need — for most packages a few files are enough.",
-    "Do not invent functionality that is not in the sources.",
+    "",
+    "CRITICAL — Do not hallucinate. Base every statement strictly on the",
+    "content you have actually read from the manifest, READMEs, mip.yaml/",
+    "mip.json, and files you fetched via read_file. Do NOT guess, infer,",
+    "make up, or extrapolate function names, signatures, behavior, usage",
+    "patterns, examples, dependencies, options, return values, or any",
+    "other detail that is not literally present in the source you have",
+    "read. If something is not in the files you have read, either call",
+    "read_file to look it up, or omit it. If you are unsure about a",
+    "detail, prefer to leave it out rather than guess. Examples in the",
+    "output must come from the actual sources (or be trivial usages",
+    "directly justified by the read source) — never invent example data",
+    "or fabricated calls. If the available files do not contain enough",
+    "information to answer, say so plainly instead of filling the gap.",
     "",
     "Scope: answer only questions about this specific package — what it",
     "does, how to use it, its API, its dependencies, and related how-tos",
